@@ -1,8 +1,5 @@
 import json
 import requests
-import pprint
-
-keys = None
 
 try:
     with open('keys.json') as data:
@@ -16,12 +13,10 @@ microsoft_emotion_headers = {
     'Ocp-Apim-Subscription-Key': keys['MicrosoftEmotionAPI']
 }
 
-image = open('test_images/happy.jpg', 'rb')
-image_body = image.read()
-image.close()
+with open('test_images/happy.jpg', 'rb') as image_file:
+    image = image_file.read()
+    r = requests.post(url='https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
+                      headers=microsoft_emotion_headers,
+                      data=image)
 
-r = requests.post(url='https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize',
-                  headers=microsoft_emotion_headers,
-                  data=image_body)
-
-pprint.pprint(r.text)
+print(r.text)
