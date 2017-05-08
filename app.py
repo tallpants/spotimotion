@@ -10,10 +10,14 @@ except IOError as e:
     print(e)
     sys.exit(1)
 
-microsoft_emotion_headers = {
-    'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': keys['MicrosoftEmotionAPI']
-}
+try:
+    microsoft_emotion_headers = {
+        'Content-Type': 'application/octet-stream',
+        'Ocp-Apim-Subscription-Key': keys['MicrosoftEmotionAPI']
+    }
+except KeyError as e:
+    print("Couldn't find the required keys in keys.json.")
+    sys.exit(1)
 
 with open('test_images/happy.jpg', 'rb') as image_file:
     image = image_file.read()
