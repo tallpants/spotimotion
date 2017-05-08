@@ -1,4 +1,5 @@
 import json
+import random
 import requests
 import sys
 import webbrowser
@@ -51,5 +52,11 @@ spotify_query_params = {
 r = requests.get(url='https://api.spotify.com/v1/search',
                  params=spotify_query_params)
 
-spotify_playlists = json.loads(r.text)
-print(spotify_playlists)
+spotify_response = json.loads(r.text)
+
+playlists = {item['name']: item['external_urls']['spotify']
+             for item in spotify_response['playlists']['items']}
+
+random_playlist = random.choice(list(playlists.keys()))
+
+webbrowser.open(playlists[random_playlist])
