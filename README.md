@@ -37,10 +37,3 @@ could give you:
 ## TODO
 
 * Installation with `setuptools`
-
-## Maybe enhancements later
-
-* Convert to web app
-* Map emotions to Spotify's tunable track attributes
-* Get seed tracks for personalized recommendations
-* Use Spotify's recommendation API
