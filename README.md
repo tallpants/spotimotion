@@ -1,6 +1,6 @@
-#Spotimotion
+# Spotimotion
 
-Detect the emotion of a human face in an image and generate a Spotify playlist based on that emotion.
+Detect the emotion of a human face in an image and find a Spotify playlist based on that emotion.
 
 ## Installation
 
