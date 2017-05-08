@@ -25,4 +25,26 @@ with open('test_images/happy.jpg', 'rb') as image_file:
                       headers=microsoft_emotion_headers,
                       data=image)
 
-print(r.text)
+emotion_data = json.loads(r.text)
+
+emotions = dict()
+emotions['anger'] = emotion_data[0]['scores']['anger']
+emotions['contempt'] = emotion_data[0]['scores']['contempt']
+emotions['neutral'] = emotion_data[0]['scores']['neutral']
+emotions['sadness'] = emotion_data[0]['scores']['sadness']
+emotions['anger'] = emotion_data[0]['scores']['anger']
+emotions['happiness'] = emotion_data[0]['scores']['happiness']
+emotions['disgust'] = emotion_data[0]['scores']['disgust']
+emotions['surprise'] = emotion_data[0]['scores']['surprise']
+emotions['fear'] = emotion_data[0]['scores']['fear']
+
+
+def get_dominant_emotion(d):
+    d = dict(d)
+    vals = list(d.values())
+    keys = list(d.keys())
+
+    return (keys[vals.index(max(vals))], max(vals))
+
+
+print(get_dominant_emotion(emotions))
