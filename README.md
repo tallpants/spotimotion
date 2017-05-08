@@ -1,10 +1,12 @@
-A program that recognizes emotion from an image and finds a Spotify playlist to match it.
+#Spotimotion
+
+Detect the emotion of a human face in an image and generate a Spotify playlist based on that emotion.
 
 ## Installation
 
 ```
-$ git clone https://github.com/tallpants/spotimood.git
-$ cd spotimood
+$ git clone https://github.com/tallpants/spotimotion.git
+$ cd spotimotion
 $ pip install -r requirements.txt
 ```
 
