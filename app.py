@@ -1,6 +1,8 @@
 import json
 import requests
 import sys
+import webbrowser
+
 
 try:
     with open('keys.json') as data:
@@ -39,3 +41,15 @@ dominant_emotion = keys[vals.index(max(vals))]
 certainty_score = max(vals)
 
 print(dominant_emotion, certainty_score)
+
+spotify_query_params = {
+    'q': dominant_emotion,
+    'type': 'playlist',
+    'limit': 50
+}
+
+r = requests.get(url='https://api.spotify.com/v1/search',
+                 params=spotify_query_params)
+
+spotify_playlists = json.loads(r.text)
+print(spotify_playlists)
