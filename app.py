@@ -54,9 +54,8 @@ r = requests.get(url='https://api.spotify.com/v1/search',
 
 spotify_response = json.loads(r.text)
 
-playlists = {item['name']: item['external_urls']['spotify']
+playlists = {item['name']: item['uri']
              for item in spotify_response['playlists']['items']}
 
 random_playlist = random.choice(list(playlists.keys()))
-
 webbrowser.open(playlists[random_playlist])
