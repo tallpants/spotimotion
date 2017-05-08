@@ -1,5 +1,6 @@
 import json
 import requests
+import sys
 
 try:
     with open('keys.json') as data:
@@ -7,6 +8,7 @@ try:
 except IOError as e:
     print("Couldn't find keys.json")
     print(e)
+    sys.exit(1)
 
 microsoft_emotion_headers = {
     'Content-Type': 'application/octet-stream',
