@@ -25,6 +25,10 @@ with open(sys.argv[1], 'rb') as image_file:
                       headers=microsoft_emotion_headers,
                       data=image)
 
+if r.text == '[]':
+    print("The API failed to recognize a face")
+    exit(1)
+
 emotion_data = json.loads(r.text)
 emotions = dict(emotion_data[0]['scores'])
 
